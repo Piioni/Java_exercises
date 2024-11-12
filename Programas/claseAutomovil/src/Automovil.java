@@ -111,7 +111,7 @@ public class Automovil {
         velocidad_actual = 0;
     }
 
-    // metodo para calcular tiempo estimado de llegada segun velocidad
+    // metodo para calcular tiempo estimado de llegada según velocidad
     public double tiempoLlegada(double distancia){
         return distancia/velocidad_actual;
     }
