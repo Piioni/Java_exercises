@@ -10,13 +10,15 @@ public class Planeta {
     private tipoPlaneta tipo_Planeta = null;
     private boolean observable = false;
 
-    public Planeta(String nombre,int satelites, double masa, double volumen,int diametro ,double dist_sol, tipoPlaneta tipo_Planeta) {
+    public Planeta(String nombre,int satelites, double masa, double volumen,int diametro ,double dist_sol, tipoPlaneta tipo_Planeta, boolean observable ) {
         this.nombre = nombre;
         this.satelites = satelites;
         this.dist_sol = dist_sol;
         this.diametro = diametro;
         this.volumen = volumen;
         this.masa = masa;
+        this.tipo_Planeta = tipo_Planeta;
+        this.observable = observable;
 
     }
 

@@ -1,4 +1,4 @@
-package foc.programas.claseAutomovil;
+package foc.programas;
 
 public enum combustibles {
     Gasolina,
