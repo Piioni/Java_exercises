@@ -1,11 +1,11 @@
 package foc.programas;
 
 public class Triangulo {
-    private double base = 0;
-    private double altura = 0;
+    private double base;
+    private double altura;
 
     public Triangulo(double base, double altura) {
-        if (base < 0 || altura < 0) {
+        if (base <= 0 || altura <= 0) {
             System.out.println("Error en los datos, introduzcalos nuevamente");
             this.base = 0;
             this.altura = 0;
