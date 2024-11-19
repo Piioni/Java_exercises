@@ -1,18 +1,34 @@
 package foc.programas;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        Triangulo t1 = new Triangulo(7, 4);
-        Triangulo t2 = new Triangulo(5, 5);
-        Triangulo t3 = new Triangulo(4, 3);
-
-
-        System.out.println("La hipotenusa del triangulo 1 es: " + t1.hipotenusa());
-        System.out.println("La hipotenusa del triangulo 2 es: " + t2.hipotenusa());
+        int catetoA;
+        int catetoB;
+        int anguloY;
+        while (true) {
+            System.out.println("Dime el primer cateto del triangulo: ");
+            int cateto_prueba_A = Integer.parseInt(sc.nextLine());
+            System.out.println("Dime el segundo cateto del triangulo: ");
+            int cateto_prueba_B = Integer.parseInt(sc.nextLine());
+            System.out.println("Dime el angulo en grados que hay entre estos 2 catetos: ");
+            int angulo_prueba_Y = Integer.parseInt(sc.nextLine());
+            if (cateto_prueba_A <= 0 || cateto_prueba_B <= 0 || angulo_prueba_Y <= 0) {
+                System.out.println("Error en los datos, introduzcalos nuevamente");
+            } else {
+                catetoA = cateto_prueba_A;
+                catetoB = cateto_prueba_B;
+                anguloY = angulo_prueba_Y;
+                break;
+            }
+        }
+        Triangulo t1 = new Triangulo(catetoA, catetoB, anguloY);
         t1.queSoy();
-        t2.queSoy();
-        t3.queSoy();
-
+        t1.getPerimetro();
+        t1.getArea();
+        sc.close();
     }
 }

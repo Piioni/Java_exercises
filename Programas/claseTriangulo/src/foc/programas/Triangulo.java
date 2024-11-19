@@ -1,46 +1,70 @@
 package foc.programas;
 
 public class Triangulo {
-    private double base;
-    private double altura;
+    private final int catetoA;
+    private final int catetoB;
+    private final int angulo;
+    private double catetoC;
+    private double perimetro;
+    private double area;
 
-    public Triangulo(double base, double altura) {
-        if (base <= 0 || altura <= 0) {
-            System.out.println("Error en los datos, introduzcalos nuevamente");
-            this.base = 0;
-            this.altura = 0;
+    // Constructor con parameters
+    public Triangulo(int base, int altura, int angulo) {
+        this.catetoA = base;
+        this.catetoB = altura;
+        this.angulo = angulo;
+        this.catetoC = calcularCatetoC();
+    }
+
+    // Metodo para calcular el cateto c y asignar su valor en el objeto
+    public double calcularCatetoC() {
+        double radianes = angulo * Math.PI / 180;
+        double catetoC = Math.sqrt((Math.pow(catetoA, 2) + Math.pow(catetoB, 2) - 2 * catetoA * catetoB * Math.cos(radianes)));
+        this.catetoC = Math.ceil(catetoC);
+        System.out.println("El cateto C del trinagulo es: " + catetoC);
+        return catetoC;
+    }
+
+    // Metodo para mostrar por pantalla que tipo de triángulo soy
+    public void queSoy() {
+        if (angulo == 90) {
+            if (catetoA == catetoB) {
+                System.out.println("Soy un triangulo Rectangulo isosceles!");
+            } else System.out.println("Soy un triangulo Rectangulo escaleno!");
         } else {
-            this.base = base;
-            this.altura = altura;
+            if (catetoA == catetoB && catetoB == catetoC) {
+                System.out.println("Soy un triangulo equilatero!");
+            } else if (catetoA == catetoB || catetoB == catetoC) {
+                System.out.println("Soy un triangulo isosceles");
+            } else System.out.println("Soy un triangulo escaleno!");
         }
     }
 
-    public double hipotenusa() {
-        return Math.sqrt(Math.pow(base, 2) + Math.pow(altura, 2));
+    // Metodo para calcular el perímetro
+    public double getPerimetro() {
+        double perimetro = catetoA + catetoB + catetoC;
+        System.out.println("El perimetro del triangulo es: " + perimetro);
+        this.perimetro= perimetro;
+        return perimetro;
     }
 
-    public void queSoy() {
-        if (base == altura) {
-            System.out.println("Soy un triangulo isosceles");
-        } else if (base != altura) {
-            System.out.println("Soy un triangulo escaleno");
-        } else System.out.println("No soy un triangulo rectangulo, Soy equilatero");
+    // Metodo para calcular el área
+    public double getArea() {
+        if (angulo == 90) {
+            double area = (double) (catetoA * catetoB) / 2;
+            System.out.println("El area del triangulo es: " + area);
+            this.area = area;
+            return area;
+        } else {
+            // Angulo que se forma al partir el triangulo por la altura
+            double radianes_triangulo_provisional = (180 - 90 - angulo) * Math.PI / 180;
+            double cateto_provisional = catetoA * Math.sin(radianes_triangulo_provisional);
+            double altura = Math.sqrt(Math.pow(catetoA, 2) - Math.pow(cateto_provisional, 2));
+            double area = (double) 1 / 2 * catetoB * altura;
+            System.out.println("El area del triangulo es: " + area);
+            this.area = area;
+            return area;
+        }
     }
 
-    // Getters and setters
-    public void setBase(double base) {
-        this.base = base;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public double getBase() {
-        return base;
-    }
-
-    public double getAltura() {
-        return altura;
-    }
 }
