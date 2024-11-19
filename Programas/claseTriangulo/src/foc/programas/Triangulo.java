@@ -9,9 +9,9 @@ public class Triangulo {
     private double area;
 
     // Constructor con parameters
-    public Triangulo(int base, int altura, int angulo) {
-        this.catetoA = base;
-        this.catetoB = altura;
+    public Triangulo(int catetoa, int catetob, int angulo) {
+        this.catetoA = catetoa;
+        this.catetoB = catetob;
         this.angulo = angulo;
         this.catetoC = calcularCatetoC();
     }
