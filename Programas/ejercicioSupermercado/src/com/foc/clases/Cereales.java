@@ -9,7 +9,7 @@ public class Cereales implements EsAlimento {
     private double precio;
     private String tipoCereal;
     private LocalDate caducidad;
-    private int calorias;
+    private double calorias;
 
     // Constructor
     public Cereales(String marca, double precio, String tipoCereal) {
@@ -33,7 +33,7 @@ public class Cereales implements EsAlimento {
         return this.caducidad;
     }
 
-    public int getCalorias(){
+    public double getCalorias(){
         return this.calorias;
     }
 
