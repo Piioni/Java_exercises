@@ -5,16 +5,16 @@ public class Pelicula {
     private String director;
     private Generos genero;
     private int duracion;
-    private int año_salida;
+    private int anio_salida;
     private double calificacion;
 
     // Constructor
-    public Pelicula(String nombre, String director, Generos genero, int duracion, int año_salida, double calificacion) {
+    public Pelicula(String nombre, String director, Generos genero, int duracion, int anio_salida, double calificacion) {
         this.nombre = nombre;
         this.director = director;
         this.genero = genero;
         this.duracion = duracion;
-        this.año_salida = año_salida;
+        this.anio_salida = anio_salida;
         this.calificacion = calificacion;
     }
 
@@ -23,7 +23,7 @@ public class Pelicula {
         if (calificacion <= 2){
             return "Es muy mala, no la veas";
         } else if (calificacion <= 5) {
-            return "Es mala, no la recomendaria";
+            return "Es mala, no la recomendaría";
         } else if (calificacion <= 7) {
             return "Es regular, lo dejo a tu criterio";
         } else if (calificacion <= 8) {
@@ -50,7 +50,7 @@ public class Pelicula {
                 "Director: " + director + "\n" +
                 "Genero: " + genero + "\n" +
                 "Duracion: " + duracion + "\n" +
-                "Año_salida=" + año_salida + "\n" +
+                "Año_salida=" + anio_salida + "\n" +
                 "Calificacion: " + calificacion );
     }
 
@@ -88,11 +88,11 @@ public class Pelicula {
     }
 
     public int getAño_salida() {
-        return año_salida;
+        return anio_salida;
     }
 
     private void setAño_salida(int año_salida) {
-        this.año_salida = año_salida;
+        this.anio_salida = año_salida;
     }
 
     public double getCalificacion() {
