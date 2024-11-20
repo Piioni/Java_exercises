@@ -1,15 +1,18 @@
 package foc.programas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pelicula {
     private String nombre;
     private String director;
-    private Generos genero;
+    private ArrayList<Generos> genero;
     private int duracion;
     private int anio_salida;
     private double calificacion;
 
     // Constructor
-    public Pelicula(String nombre, String director, Generos genero, int duracion, int anio_salida, double calificacion) {
+    public Pelicula(String nombre, String director, ArrayList<Generos> genero, int duracion, int anio_salida, double calificacion) {
         this.nombre = nombre;
         this.director = director;
         this.genero = genero;
@@ -19,8 +22,8 @@ public class Pelicula {
     }
 
     // Metodo para calcular la valoracion
-    public String calcularValoracion(){
-        if (calificacion <= 2){
+    public String calcularValoracion() {
+        if (calificacion <= 2) {
             return "Es muy mala, no la veas";
         } else if (calificacion <= 5) {
             return "Es mala, no la recomendaría";
@@ -28,19 +31,45 @@ public class Pelicula {
             return "Es regular, lo dejo a tu criterio";
         } else if (calificacion <= 8) {
             return "Es buena, recomendada";
-        } else return "Es excelente, no te vas a arrepentir de verla";
+        } else if (calificacion <= 10) {
+            return "Es excelente, no te vas a arrepentir de verla";
+        } else return "Calificacion no valida";
     }
 
     // Metodo para comprobar si 2 películas son similares
     public boolean esSimilar(Pelicula pelicula) {
         if (getGenero().equals(pelicula.getGenero())) {
             return calcularValoracion().equals(pelicula.calcularValoracion());
-        } return false;
+        }
+        return false;
     }
 
     // Metodo para saber si es pelicula epica
     public boolean esPeliculaEpica() {
         return duracion >= 180;
+    }
+
+    // Metodo mostrar lindo
+    public void imprimirCarte() {
+        String estrellas = "";
+        if (calificacion <= 2) {
+            estrellas = "*";
+        } else if (calificacion <= 5) {
+            estrellas = "**";
+        } else if (calificacion <= 7) {
+            estrellas = "***";
+        } else if (calificacion <= 8) {
+            estrellas = "****";
+        } else if (calificacion <= 10) {
+            estrellas = "*****";
+        } else estrellas = "?";
+
+
+        System.out.println("-------" + nombre + "-------" + "\n" +
+                estrellas + "\n" +
+                getAño_salida() + "\n" +
+                genero + "\n" +
+                director);
     }
 
     // Metodo imprimir
@@ -51,7 +80,7 @@ public class Pelicula {
                 "Genero: " + genero + "\n" +
                 "Duracion: " + duracion + "\n" +
                 "Año_salida=" + anio_salida + "\n" +
-                "Calificacion: " + calificacion );
+                "Calificacion: " + calificacion);
     }
 
     // Getter & Setter
@@ -71,11 +100,11 @@ public class Pelicula {
         this.director = director;
     }
 
-    public Generos getGenero() {
+    public ArrayList<Generos> getGenero() {
         return genero;
     }
 
-    private void setGenero(Generos genero) {
+    private void setGenero(ArrayList<Generos> genero) {
         this.genero = genero;
     }
 
