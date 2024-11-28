@@ -13,7 +13,10 @@ public class Vendedor {
     public void verificarEdad(int edad) {
         if (edad > 18 && edad < 120) {
             this.edad = edad;
-        } else throw new IllegalArgumentException("La edad debe ser mayor a 18 y menor a 120");
+        } else if (edad < 18 && edad >= 0) {
+            throw new IllegalArgumentException("La edad debe ser mayor a 18");
+        } else
+            throw new IllegalArgumentException("La edad debe ser mayor a 18 y menor a 120");
     }
 
     // Metodo para mostrar atributos
