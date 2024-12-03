@@ -14,7 +14,7 @@ public class CalcularPotencia {
         } else if (base == 0) {
             System.out.println("El resultado de la potencia es: 0");
             // Caso general de potencia
-        } else {
+        } else if (base>1 && exponente>0){
             for (int i = 1; i <= exponente; i++) {
                 resultado *= base;
                 // Comprobación para romper el bucle si el resultado supera 1000.
@@ -27,6 +27,7 @@ public class CalcularPotencia {
             if (resultado <= 1000) {
                 System.out.println("El resultado de " + base + "^" + exponente + " es igual a: " + resultado);
             }
-        }
+            // Else final para tirar excepción si el programa se ejecuta sin -ea.
+        } else throw new IllegalArgumentException("Los valores de base y exponente no pueden ser negativos");
     }
 }

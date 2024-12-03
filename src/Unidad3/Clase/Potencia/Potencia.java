@@ -1,5 +1,7 @@
 package Unidad3.Clase.Potencia;
+
 import java.util.Scanner;
+
 public class Potencia {
     public static void main(String[] args) {
 
@@ -23,9 +25,9 @@ public class Potencia {
 
         // Si los números son correctos, se llama al metodo potencia con sus determinados argumentos.
         if (numerosCorrectos) {
-            try{
+            try {
                 CalcularPotencia.potencia(base, exponente);
-            } catch (AssertionError e) {
+            } catch (AssertionError | IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }
         }
