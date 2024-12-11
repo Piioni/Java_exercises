@@ -7,7 +7,6 @@ public class CalcularPotencia {
         assert base >= 0 && base <= 10 : "La base debe ser mayor a 0 y menor a 10 incluyente";
         assert exponente >= 0 && exponente <= 20 : "El exponente debe ser mayor a 0 y menor a 20 incluyente";
         int resultado = 1;
-
         // Primeros 2 casos especiales
         if (exponente == 0 || base == 1) {
             System.out.println("El resultado de la potencia es: 1");
