@@ -3,29 +3,25 @@ package LeetCode.Arrays.findMaxConsecutives;
 public class Main {
     public static void main(String[] args) {
 
-        int[] nums = {1, 1, 0, 1, 1 ,1 };
+        int[] nums = {1, 1, 0, 1 ,1, 0, 0 };
         System.out.println(findMaxConsecutiveOnes(nums));
     }
 
     public static int findMaxConsecutiveOnes(int[] nums) {
+        // Declaramos las variables, una que devolveremos y otra que nos ayudará a contar los consecutivos
         int maxConsecutives = 0;
         int consecutivos = 0;
-        int anterior = nums[0];
-        if (nums.length == 1) {
-            if (nums[0] == 0) {
-                return 0;
-            } else  return 1;
-        }
+        // recorremos el array
         for (int num : nums) {
-
-            if (num == anterior) {
+            if (num == 1) {
                 consecutivos += 1;
+                // si consecutivos es mayor que maxConsecutives, actualizamos maxConsecutives
+                if (consecutivos > maxConsecutives) {
+                    maxConsecutives = consecutivos;
+                }
+                // si el numero es 0, reseteamos consecutivos
             } else {
-                consecutivos = 1;
-                anterior = num;
-            }
-            if ( consecutivos > maxConsecutives) {
-                maxConsecutives = consecutivos;
+                consecutivos = 0;
             }
 
         }
