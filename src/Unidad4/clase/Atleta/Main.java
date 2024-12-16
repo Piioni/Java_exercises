@@ -8,6 +8,11 @@ public class Main {
         Atleta atleta3 = new Atleta("Diego Palomenque", 9.53);
         Atleta atleta4 = new Atleta("Gilmar Herrera", 9.29);
 
+        atleta1.imprimirAtleta();
+        atleta2.imprimirAtleta();
+        atleta3.imprimirAtleta();
+        atleta4.imprimirAtleta();
+
         atleta1.correr400Metros();
         atleta2.correr400Metros();
         atleta3.correr400Metros();
