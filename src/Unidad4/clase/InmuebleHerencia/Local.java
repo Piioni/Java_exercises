@@ -3,8 +3,8 @@ package Unidad4.clase.InmuebleHerencia;
 public class Local extends Inmueble{
     protected TipoLocal tipo;
 
-    public Local(int identificador, int area, String direccion, TipoLocal tipo) {
-        super(identificador, area, direccion);
+    public Local(int identificador, int area, String direccion, double precioVenta, TipoLocal tipo) {
+        super(identificador, area, direccion, precioVenta);
         this.tipo = tipo;
     }
 

@@ -3,8 +3,8 @@ package Unidad4.clase.InmuebleHerencia;
 public class Casa extends InmuebleVivienda {
     protected int numPisos;
 
-    public Casa(int identificador, int area, String direccion, int numHabitaciones, int numBanos, int numPisos) {
-        super(identificador, area, direccion, numHabitaciones, numBanos);
+    public Casa(int identificador, int area, String direccion, double precioVenta, int numHabitaciones, int numBanos, int numPisos) {
+        super(identificador, area, direccion, precioVenta, numHabitaciones, numBanos);
         this.numPisos = numPisos;
     }
 

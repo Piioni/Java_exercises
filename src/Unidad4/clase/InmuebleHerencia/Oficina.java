@@ -4,8 +4,8 @@ public class Oficina extends Local{
     protected double valorArea;
     protected boolean esGobierno;
 
-    public Oficina(int identificador, int area, String direccion, TipoLocal tipo, double valorArea, boolean esGobierno) {
-        super(identificador, area, direccion, tipo);
+    public Oficina(int identificador, int area, String direccion, double precioVenta, TipoLocal tipo, double valorArea, boolean esGobierno) {
+        super(identificador, area, direccion, precioVenta, tipo);
         this.valorArea = valorArea;
         this.esGobierno = esGobierno;
     }

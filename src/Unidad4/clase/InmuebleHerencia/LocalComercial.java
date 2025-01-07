@@ -4,8 +4,8 @@ public class LocalComercial extends Local {
     protected double valorArea;
     protected String centroComercial;
 
-    public LocalComercial(int identificador, int area, String direccion, TipoLocal tipo, double valorArea, String centroComercial) {
-        super(identificador, area, direccion, tipo);
+    public LocalComercial(int identificador, int area, String direccion, double precioVenta, TipoLocal tipo, double valorArea, String centroComercial) {
+        super(identificador, area, direccion, precioVenta, tipo);
         this.valorArea = valorArea;
         this.centroComercial = centroComercial;
     }

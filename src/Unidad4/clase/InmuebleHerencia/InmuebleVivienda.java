@@ -10,16 +10,14 @@ public class InmuebleVivienda extends Inmueble{
         this.numBanos = 0;
     }
 
-    public InmuebleVivienda(int identificador, int area, String direccion, int numHabitaciones, int numBanos){
-        super(identificador, area, direccion);
+    public InmuebleVivienda(int identificador, int area, String direccion, double precioVenta, int numHabitaciones, int numBanos){
+        super(identificador, area, direccion, precioVenta);
         this.numHabitaciones = numHabitaciones;
         this.numBanos = numBanos;
     }
 
     public void imprimir(){
-        System.out.println("Identificador: " + this.identificador);
-        System.out.println("Area: " + this.area);
-        System.out.println("Direccion: " + this.direccion);
+        super.imprimir();
         System.out.println("Numero de habitaciones: " + this.numHabitaciones);
         System.out.println("Numero de baños: " + this.numBanos);
     }

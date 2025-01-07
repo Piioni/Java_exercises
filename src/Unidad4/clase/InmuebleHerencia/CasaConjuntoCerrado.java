@@ -6,8 +6,8 @@ public class CasaConjuntoCerrado extends CasaUrbana {
     protected boolean piscina;
     protected boolean camposDeportivos;
 
-    public CasaConjuntoCerrado(int identificador, int area, String direccion, int numHabitaciones, int numBanos, int numPisos, double valorAreaDoble, double valorAdministracion, boolean piscina, boolean camposDeportivos) {
-        super(identificador, area, direccion, numHabitaciones, numBanos, numPisos);
+    public CasaConjuntoCerrado(int identificador, int area, String direccion, double precioVenta, int numHabitaciones, int numBanos, int numPisos, double valorAreaDoble, double valorAdministracion, boolean piscina, boolean camposDeportivos) {
+        super(identificador, area, direccion, precioVenta, numHabitaciones, numBanos, numPisos);
         this.valorAreaDoble = valorAreaDoble;
         this.valorAdministracion = valorAdministracion;
         this.piscina = piscina;
