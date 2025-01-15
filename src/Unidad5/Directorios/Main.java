@@ -18,10 +18,9 @@ public class Main {
         // Listar los archivos del directorio
         try (var stream = Files.list(path)) {
             stream.forEach(file -> {
-                System.out.println(file.getFileName());
                 if(Files.isDirectory(file)) {
-                    System.out.println("Es un directorio");
-                } else System.out.println("Es un archivo");
+                    System.out.println(file.getFileName() + " Es un directorio");
+                } else System.out.println(file.getFileName() + " Es un archivo");
             });
         } catch (IOException e) {
             throw new RuntimeException(e);
