@@ -1,11 +1,7 @@
 package Unidad5.Inmobiliaria;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serial;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class Inmueble implements Serializable {
     @Serial
@@ -15,24 +11,12 @@ public class Inmueble implements Serializable {
     private String direccion;
     private Tipo tipo;
 
-    private static final Path path = Path.of("C:\\Java\\Directorio_Padre\\Inmuebeles\\Lista.txt");
 
     public Inmueble(int id, String ciudad, String direccion, Tipo tipo) {
         this.id = id;
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.tipo = tipo;
-    }
-
-    public void agregarInmueble(){
-        // Escribir el objeto en un fichero
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path));
-            oos.writeObject(this);
-            oos.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     public void imprimir() {

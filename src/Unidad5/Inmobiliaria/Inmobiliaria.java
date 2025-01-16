@@ -1,31 +1,44 @@
 package Unidad5.Inmobiliaria;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Inmobiliaria implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
-    private static final Path path = Path.of("C:\\Java\\Directorio_Padre\\Inmuebeles\\Lista.txt");
-    private static final ArrayList<Inmueble> inmuebles = new ArrayList<>();
+
+    private static final Path path = Path.of("C:\\Java\\Directorio_Padre\\Inmuebles\\Lista.txt");
+    private final ArrayList<Inmueble> inmuebles = new ArrayList<>();
+    private int numInmuebles = 0;
 
     public Inmobiliaria() {
-        loadInmuebles();
+        try{
+            loadInmuebles();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void agregarInmueble(Inmueble inmueble) {
+    public int getNewId() {
+        return ++numInmuebles;
+    }
+
+    public void agregarInmueble(String ciudad, String direccion, Tipo tipo) {
+        Inmueble inmueble = new Inmueble(getNewId(), ciudad, direccion, tipo);
         inmuebles.add(inmueble);
+        this.guardarInmuebles();
+
     }
 
     public void eliminarInmueble(int id) {
         Inmueble inmueble = buscarInmueble(id);
         if (inmueble != null) {
             inmuebles.remove(inmueble);
+            numInmuebles--;
         }
+        this.guardarInmuebles();
     }
 
     public void imprimirInmuebles() {
@@ -43,24 +56,32 @@ public class Inmobiliaria implements Serializable {
         // Escribir el objeto en un fichero
         try {
             ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path));
-            oos.writeObject(inmuebles);
+            oos.writeObject(this);
             oos.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void loadInmuebles() {
+    public void loadInmuebles() throws IOException {
         // Leer el objeto de un fichero
-        try {
-            ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(path));
-            ArrayList<Inmueble> inmuebles = (ArrayList<Inmueble>) ois.readObject();
-            inmuebles.forEach(Inmueble::imprimir);
+        if(Files.exists(path) && Files.size(path) > 0) {
+            try {
+                ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(path));
 
-        } catch (ClassNotFoundException e) {
-            System.out.println("error" + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("error 2" + e.getMessage());
+
+                Inmobiliaria inmobiliaria = (Inmobiliaria) ois.readObject();
+                this.inmuebles.addAll(inmobiliaria.inmuebles);
+                this.numInmuebles = inmobiliaria.numInmuebles;
+
+            } catch (IOException e) {
+                System.out.println("error 2" + e.getMessage());
+            } catch (ClassNotFoundException e) {
+                System.out.println("error 3" + e.getMessage());
+            }
+        } else {
+            System.out.println("El fichero no existe o No hay inmuebles");
         }
+
     }
 }
