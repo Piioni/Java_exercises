@@ -68,8 +68,6 @@ public class Inmobiliaria implements Serializable {
         if(Files.exists(path) && Files.size(path) > 0) {
             try {
                 ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(path));
-
-
                 Inmobiliaria inmobiliaria = (Inmobiliaria) ois.readObject();
                 this.inmuebles.addAll(inmobiliaria.inmuebles);
                 this.numInmuebles = inmobiliaria.numInmuebles;
