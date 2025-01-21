@@ -2,11 +2,11 @@ package Unidad5.Swing.Personas;
 
 import java.util.ArrayList;
 
-public class ListaPersonasArray {
+public class ListaPersonas {
     private ArrayList<Persona> listaPersonas;
 
 
-    public ListaPersonasArray() {
+    public ListaPersonas() {
         listaPersonas = new ArrayList<>();
     }
 

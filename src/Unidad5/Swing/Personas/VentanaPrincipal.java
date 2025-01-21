@@ -9,14 +9,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private Container contenedor;
     private JLabel nombre, apellidos, telefono, direccion;
     private JTextField campoNombre, campoApellidos, campoTelefono, campoDireccion;
-    private JButton anadir, eliminar, borrarLista;
+    private JButton anadir, eliminar, borrarLista, editar;
     private JList<String> listaNombres;
     private DefaultListModel<String> modelo;
     private JScrollPane scrollLista;
-    private ListaPersonasArray listaPersonas;
+    private ListaPersonas listaPersonas;
 
     public VentanaPrincipal(){
-        listaPersonas = new ListaPersonasArray();
+        listaPersonas = new ListaPersonas();
         inicio();
 
         setTitle("Lista de Personas");
@@ -72,6 +72,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         eliminar.addActionListener(this);
         contenedor.add(eliminar);
 
+        editar = new JButton("Editar");
+        editar.setBounds(230, 130, 150, 30);
+        editar.addActionListener(this);
+        contenedor.add(editar);
+
         borrarLista = new JButton("Borrar Lista");
         borrarLista.setBounds(230, 170, 150, 30);
         borrarLista.addActionListener(this);
@@ -104,6 +109,18 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         } else if (e.getSource() == borrarLista) {
             listaPersonas.borrarLista();
             modelo.clear();
+        } else if (e.getSource() == editar) {
+            int index = listaNombres.getSelectedIndex();
+            if (index >= 0) {
+                String nombre = campoNombre.getText();
+                String apellidos = campoApellidos.getText();
+                String telefono = campoTelefono.getText();
+                String direccion = campoDireccion.getText();
+                Persona p = new Persona(nombre, apellidos, telefono, direccion);
+                listaPersonas.eliminarPersona(index);
+                listaPersonas.anadirPersona(p);
+                modelo.set(index, p.nombre + " " + p.apellidos + " - " + p.telefono + " - " + p.direccion);
+            }
         }
     }
 }
