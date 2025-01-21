@@ -2,7 +2,6 @@ package Unidad4.RangelJuan.PaquetePrincipal;
 
 import Unidad4.RangelJuan.PaqueteSecundario.Camarero;
 import Unidad4.RangelJuan.PaqueteSecundario.Persona;
-import Unidad4.clase.RangelJuan.PaqueteSecundario.*;
 
 public class Main {
     public static void main(String[] args) {

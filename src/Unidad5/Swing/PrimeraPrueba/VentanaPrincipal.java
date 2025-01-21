@@ -101,8 +101,33 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evento){
         if ( evento.getSource() == calcular){
+            Notas notas = new Notas();
+            notas.listaNotas[0] = Double.parseDouble(campoNota1.getText());
+            notas.listaNotas[1] = Double.parseDouble(campoNota2.getText());
+            notas.listaNotas[2] = Double.parseDouble(campoNota3.getText());
+            notas.listaNotas[3] = Double.parseDouble(campoNota4.getText());
+            notas.listaNotas[4] = Double.parseDouble(campoNota5.getText());
+            notas.calcularPromedio();
+            notas.calcularDesviacion();
 
+            promedio.setText("Promedio: " + notas.calcularPromedio());
+            desviacion.setText("Desviacion: " + notas.calcularDesviacion());
+            mayor.setText("Mayor: " + notas.calcularMayor());
+            menor.setText("Menor: " + notas.calcularMenor());
         }
+
+        if (evento.getSource() == limpiar){
+            campoNota1.setText("");
+            campoNota2.setText("");
+            campoNota3.setText("");
+            campoNota4.setText("");
+            campoNota5.setText("");
+            promedio.setText("Promedio: ");
+            desviacion.setText("Desviacion: ");
+            mayor.setText("Mayor: ");
+            menor.setText("Menor: ");
+        }
+
     }
 
 
